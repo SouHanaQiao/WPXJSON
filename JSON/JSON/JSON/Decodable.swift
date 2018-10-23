@@ -50,7 +50,7 @@ struct JSONCodingKeys: CodingKey {
 }
 
 
-extension KeyedDecodingContainer {
+public extension KeyedDecodingContainer {
     
     func decode(_ type: Dictionary<String, Any>.Type, forKey key: K) throws -> Dictionary<String, Any> {
         let container = try self.nestedContainer(keyedBy: JSONCodingKeys.self, forKey: key)
@@ -100,7 +100,7 @@ extension KeyedDecodingContainer {
     }
 }
 
-extension UnkeyedDecodingContainer {
+public extension UnkeyedDecodingContainer {
     
     mutating func decode(_ type: Array<Any>.Type) throws -> Array<Any> {
         var array: [Any] = []
@@ -128,7 +128,7 @@ extension UnkeyedDecodingContainer {
 }
 
 
-extension JSON {
+public extension JSON {
     
     var string: String {
         var jsonString = ""
@@ -187,7 +187,7 @@ extension JSON {
     }
 }
 
-extension JSON {
+public extension JSON {
     func toModel<T>() throws -> T where T : _WPXJSONDecodable {
         let swiftObject = T.init()
         let mirror = Mirror(reflecting: swiftObject)
@@ -240,7 +240,7 @@ extension JSON {
     }
 }
 
-extension Dictionary where Key == String, Value == JSON {
+public extension Dictionary where Key == String, Value == JSON {
     var jsonString: String? {
         do {
             let json = try JSON(encodable: self)

@@ -11,7 +11,7 @@ import Foundation
 public protocol WPXJSONEnumCodable: _BuiltInType, DefaultConstructor, Codable {
 }
 
-extension RawRepresentable where Self: WPXJSONEnumCodable {
+public extension RawRepresentable where Self: WPXJSONEnumCodable {
     init() {
         let pointer = UnsafeMutablePointer<Self>.allocate(capacity: 1)
         self = pointer.move()

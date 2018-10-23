@@ -106,7 +106,7 @@ extension JSON: Equatable {
     }
 }
 
-extension JSON {
+public extension JSON {
     
     var value: Any {
         get {

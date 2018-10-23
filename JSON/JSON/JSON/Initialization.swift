@@ -45,9 +45,7 @@ extension JSON {
 
 extension JSON {
 
-    /// Create a JSON value from a `Codable`. This will give you access to the “raw”
-    /// encoded JSON value the `Codable` is serialized into. And hopefully, you could
-    /// encode the resulting JSON value and decode the original `Codable` back.
+    /// Create a JSON value from a `Codable`.
     public init<T: Codable>(codable: T) throws {
         let encoded = try JSONEncoder().encode(codable)
         self = try JSONDecoder().decode(JSON.self, from: encoded)

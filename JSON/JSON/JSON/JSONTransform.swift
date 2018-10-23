@@ -258,7 +258,7 @@ extension Optional: _BuiltInType {
 
 extension RawRepresentable where Self: _BuiltInType {
     
-    static func json_transformToBuiltIn(from json: JSON) -> Self? {
+    public static func json_transformToBuiltIn(from json: JSON) -> Self? {
         if let transformableType = RawValue.self as? JSONTransformable.Type {
             if let typedValue = transformableType.transform(from: json) {
                 let raw = Self(rawValue: typedValue as! RawValue)
@@ -268,7 +268,7 @@ extension RawRepresentable where Self: _BuiltInType {
         return nil
     }
     
-    var json: JSON {
+    public var json: JSON {
         return JSON(self.rawValue)
     }
 }
